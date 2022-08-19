@@ -1,7 +1,5 @@
-from django.views.generic import TemplateView
-from django.views.generic import View
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import TemplateView, View
 
 
 def hello_world(request):

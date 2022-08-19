@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from mainapp import views
 from django.views.generic import RedirectView
 
+from mainapp import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("", views.hello_world),
     path("", RedirectView.as_view(url="mainapp/")),
     path("<str:word>/", views.check_kwargs),
