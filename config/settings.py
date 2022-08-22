@@ -128,3 +128,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+if DEBUG:
+    INSTALLED_APPS.append('django_extensions')
