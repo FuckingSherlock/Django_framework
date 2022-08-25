@@ -130,4 +130,4 @@ STATICFILES_DIRS = [
 ]
 
 if DEBUG:
-    INSTALLED_APPS.append('django_extensions')
+    INSTALLED_APPS.append("django_extensions")
