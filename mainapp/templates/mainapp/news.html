@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load nexter %}
 
 {% block content %}
+
 
   {% with range as double_range %}
 
@@ -19,7 +21,22 @@
         {% for i in double_range %}
           <div class="card my-2">
             <div class="card-body">
-              <h5 class="card-title">{{ news_title }}</h5>
+              <h5 class="card-title">{{ 'title'|nexter }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                {{ datetime_obj|date:"Y-m-d h-i-s" }}
+              </h6>
+              <p class="card-text">{{ 'descr'|nexter }}</p>
+              <a href="{{ 'link'|nexter }}" class="card-link">Подробнее</a>
+            </div>
+          </div>
+        {% endfor %}
+
+
+        {% comment %} {% for i in double_range %}
+         {{get_context_data}}
+          <div class="card my-2">
+            <div class="card-body">
+              <h5 class="card-title">{{ news_title }}t.news</h5>
               <h6 class="card-subtitle mb-2 text-muted">
                 {{ datetime_obj|date:"Y-m-d h-i-s" }}
               </h6>
@@ -27,7 +44,8 @@
               <a href="#" class="card-link">Подробнее</a>
             </div>
           </div>
-        {% endfor %}
+        {% endfor %}  {% endcomment %}
+
 
       </div>
 
@@ -66,7 +84,6 @@
           <li class="page-item"><a class="page-link" href="#">Previous</a></li>
           <li class="page-item"><a class="page-link" href="{% url 'mainapp:news_paginator' 1 %}?param1=foobar">1</a></li>
           <li class="page-item"><a class="page-link" href="{% url 'mainapp:news_paginator' page=2 %}">2</a></li>
-          {# <li class="page-item"><a class="page-link" href="{% url 'mainapp:news_paginator' three %}">3</a></li> #}
           <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
       </nav>
