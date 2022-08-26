@@ -15,10 +15,22 @@
     {% endif %}
 
     <div class="row">
-
       <div class="col-lg-8">
+        {% for news in news_new %}
+          <div class="card my-2">
+            <div class="card-body">
+              <h5 class="card-title">{{ news.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                {{ datetime_obj|date:"Y-m-d h-i-s" }}
+              </h6>
+              <p class="card-text">{{ news.descr }}</p>
+              <a href="{{ news.link }}" class="card-link">Подробнее</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
 
-        {% for i in double_range %}
+      {% comment %} {% for i in double_range %}
           <div class="card my-2">
             <div class="card-body">
               <h5 class="card-title">{{ 'title'|nexter }}</h5>
@@ -29,25 +41,8 @@
               <a href="{{ 'link'|nexter }}" class="card-link">Подробнее</a>
             </div>
           </div>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
 
-
-        {% comment %} {% for i in double_range %}
-         {{get_context_data}}
-          <div class="card my-2">
-            <div class="card-body">
-              <h5 class="card-title">{{ news_title }}t.news</h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                {{ datetime_obj|date:"Y-m-d h-i-s" }}
-              </h6>
-              <p class="card-text">{{ news_preview }}</p>
-              <a href="#" class="card-link">Подробнее</a>
-            </div>
-          </div>
-        {% endfor %}  {% endcomment %}
-
-
-      </div>
 
       <div class="col-lg-4">
         <div class="card my-2 sticky-top">
