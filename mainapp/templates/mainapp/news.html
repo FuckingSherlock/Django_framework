@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load nexter %}
+{% load datetime_new %}
 
 {% block content %}
 
@@ -21,7 +22,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ news.title }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
-                {{ datetime_obj|date:"Y-m-d h-i-s" }}
+                {{ news.time|datetime_new }}
               </h6>
               <p class="card-text">{{ news.descr }}</p>
               <a href="{{ news.link }}" class="card-link">Подробнее</a>

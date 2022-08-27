@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 
 from django.views.generic import TemplateView
 
@@ -15,15 +14,8 @@ class NewsPageView(TemplateView):
         context = super().get_context_data(**kwargs)
         with open("Django_framework/templates/news.json", "r") as f:
             news = json.loads(f.read())
-
         context["news_new"] = news
-        # Get all previous data
-        # Create your own data
-        context["news_title"] = "head"
-        context["news_preview"] = "descr"
         context["range"] = range(5)
-        context["datetime_obj"] = datetime.now()
-        print(context)
         return context
 
 
