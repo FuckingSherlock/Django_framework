@@ -51,7 +51,7 @@
 # count = 0
 # for i in range(0, len(links_list)):
 #     data.append({"title": titles[i], "time": times[i],
-#                 "descr": descripts[i], "link": links_list[i]})
+#                 "preambule": descripts[i], "link": links_list[i]})
 #     # data[str(titles[i])] = [descripts[count], link.replace('\n', ''), str(titles[i+1])]
 #     count += 1
 #     if count > 20:
