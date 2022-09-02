@@ -135,3 +135,8 @@ STATICFILES_DIRS = [
 
 if DEBUG:
     INSTALLED_APPS.append("django_extensions")
+
+# Media files
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = BASE_DIR / "media"
