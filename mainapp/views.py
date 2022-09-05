@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-
 from django.views.generic import TemplateView
 
 from mainapp import models as mainapp_models
@@ -21,6 +20,7 @@ class NewsPageView(TemplateView):
         context["news_new"] = mainapp_models.News.objects.all()[:5]
         context["range"] = range(5)
         return context
+
 
 # class NewsPageView(TemplateView):
 #     template_name = "mainapp/news.html"
@@ -57,12 +57,9 @@ class CoursesDetailView(TemplateView):
 
     def get_context_data(self, pk=None, **kwargs):
         context = super(CoursesDetailView, self).get_context_data(**kwargs)
-        context["course_object"] = get_object_or_404(
-            mainapp_models.Courses, pk=pk)
-        context["lessons"] = mainapp_models.Lesson.objects.filter(
-            course=context["course_object"])
-        context["teachers"] = mainapp_models.CourseTeachers.objects.filter(
-            course=context["course_object"])
+        context["course_object"] = get_object_or_404(mainapp_models.Courses, pk=pk)
+        context["lessons"] = mainapp_models.Lesson.objects.filter(course=context["course_object"])
+        context["teachers"] = mainapp_models.CourseTeachers.objects.filter(course=context["course_object"])
         return context
 
 
@@ -72,7 +69,3 @@ class ContactsPageView(TemplateView):
 
 class DocSitePageView(TemplateView):
     template_name = "mainapp/doc_site.html"
-
-
-class LoginPageView(TemplateView):
-    template_name = "mainapp/login.html"

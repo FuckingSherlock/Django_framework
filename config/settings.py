@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "markdownify.apps.MarkdownifyConfig",
+    "social_django",
     "mainapp",
+    "authapp",
 ]
 
 MIDDLEWARE = [
@@ -57,16 +59,19 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            "./Django_framework/templates",
+            "./templates",
         ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
+                "django.template.context_processors.media",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "mainapp.context_processors.example.simple_context_processor",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ],
         },
     },
@@ -104,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTH_USER_MODEL = "authapp.CustomUser"
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -135,3 +140,22 @@ STATICFILES_DIRS = [
 
 if DEBUG:
     INSTALLED_APPS.append("django_extensions")
+
+# Media files
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = BASE_DIR / "media"
+
+
+LOGIN_REDIRECT_URL = "mainapp:index"
+LOGOUT_REDIRECT_URL = "mainapp:index"
+
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+
+AUTHENTICATION_BACKENDS = (
+    "social_core.backends.github.GithubOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+)
+
+SOCIAL_AUTH_GITHUB_KEY = "7280e96a62ff85bf4502"
+SOCIAL_AUTH_GITHUB_SECRET = "c44af945e2393fb2f354c5ba7e813838b55b06b7"
