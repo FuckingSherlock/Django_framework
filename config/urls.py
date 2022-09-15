@@ -4,8 +4,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import RedirectView
+# from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
+    # i18n_patterns(, prefix_default_language=False),
     path("admin/", admin.site.urls),
     path("i18n/", include("django.conf.urls.i18n")),
     path("", RedirectView.as_view(url="mainapp/")),
@@ -13,6 +15,7 @@ urlpatterns = [
     path("mainapp/", include("mainapp.urls", namespace="mainapp")),
     path("authapp/", include("authapp.urls", namespace="authapp")),
 ]
+
 
 if settings.DEBUG:
     urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))

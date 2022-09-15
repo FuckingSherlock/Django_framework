@@ -239,5 +239,10 @@ EMAIL_FILE_PATH = "var/email-messages/"
 # Localization
 LOCALE_PATHS = [BASE_DIR / "locale"]
 
+# LANGUAGE_CODE = 'ru'
+LANGUAGES = (
+    ('en', 'English'),
+    ('ru', 'Russian'),
+)
 # Locate of test-driver
 SELENIUM_DRIVER_PATH_FF = BASE_DIR / "var" / "selenium" / "geckodriver"
